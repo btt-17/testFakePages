@@ -71,12 +71,19 @@
     margin-top: -35%;
 }
 
+@font-face {
+    font-family: "LineSeed";
+    src: url("LINESeedJP_20230831/Web/WOFF/LINESeedJP_OTF_Bd.woff");
+}
+
+
 .campaignMessage {
     font-size: 14px;
     font-weight: bold;
     color: #838181;
     margin-left: 11px;
     padding-top: 10px;
+     font-family: "LineSeed";
   }
 
   .couponLink{
@@ -86,6 +93,7 @@
     color: #78b4f4;
     margin-top: 55%;
     padding-bottom: 14px;
+    font-family: "LineSeed";
   }
 
 @media only screen and (max-width: 430px) {
