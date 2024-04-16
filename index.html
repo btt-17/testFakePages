@@ -17,9 +17,9 @@
      </div>
 
      <!--Container: Campaign + Coupon-->
-     <div class="container">
+     <div class="container" id="container">
       <div class="campaignMessage">学んでトクトク！おでかけ投票キャンペーン</div>
-      <div class="items-container">
+      <div class="items-container" id="items-container">
         <div class="item">
           <img class="test-image" src="media/Group 42.png">
         </div>
@@ -71,38 +71,87 @@
 
 
   <script>
-    let container = document.querySelector(".container");
-    let innerContainer = document.querySelector(".items-container");
+    // let container = document.querySelector(".container");
+    // let innerContainer = document.querySelector(".items-container");
+
+    let container = document.getElementById("container");
+    let innerContainer = document.getElementById("items-container");
+    
     
     let pressed = false;
     let startX;
     let x;
-    container.addEventListener("mousedown", (e) => {
+    // container.addEventListener("mousedown", (e) => {
+    //     e.preventDefault();
+    //     pressed = true;
+    //     startX = e.offsetX - innerContainer.offsetLeft;
+    //     container.style.cursor = "grabbing";
+    //     console.log("mousedown", container.style.cursor, pressed);
+    // });
+    
+    // container.addEventListener("mouseenter", (e) => {
+    //     e.preventDefault();
+    //     container.style.cursor = "grab";
+    //     console.log("mouseenter",  container.style.cursor, pressed);
+    // });
+    
+    // container.addEventListener("mouseup", (e) => {
+    //      e.preventDefault();
+    //     container.style.cursor = "grab";
+    //     pressed = false;
+    //     console.log("mouseup",  container.style.cursor, pressed);
+    // });
+    
+    // container.addEventListener("mousemove", (e) => {
+    //     if (!pressed) return;
+    //     e.preventDefault();
+    
+    //     console.log("mousemove-start", pressed, innerContainer.style.left)
+    //     x = e.offsetX;
+    //     innerContainer.style.left = `${x - startX}px`;
+    //     console.log("mousemove", pressed)
+    // });
+
+    ////////////
+
+     container.addEventListener("touchstart", (e) => {
         pressed = true;
-        startX = e.offsetX - innerContainer.offsetLeft;
+        var rect = event.target.getBoundingClientRect()
+        var offsetX = (event.touches[0].clientX - window.pageXOffset - rect.left) 
+        // startX = e.offsetX - innerContainer.offsetLeft;
+        startX = offsetX - innerContainer.offsetLeft;
         container.style.cursor = "grabbing";
+        console.log("touchstart", container.style.cursor, pressed, offsetX, innerContainer.offsetLeft);
     });
     
-    container.addEventListener("mouseenter", () => {
-        container.style.cursor = "grab";
-    });
+    // container.addEventListener("mouseenter", () => {
+    //     container.style.cursor = "grab";
+    //     console.log("mouseenter",  container.style.cursor, pressed);
+    // });
     
-    container.addEventListener("mouseup", () => {
+    container.addEventListener("touchend", () => {
         container.style.cursor = "grab";
         pressed = false;
+        console.log("touchend",  container.style.cursor, pressed);
     });
     
-    container.addEventListener("mousemove", (e) => {
+    container.addEventListener("touchmove", (e) => {
         if (!pressed) return;
         e.preventDefault();
     
-        x = e.offsetX;
+        console.log("touchmove-start", pressed, innerContainer.style.left)
+        var rect = event.target.getBoundingClientRect()
+        var offsetX = (event.touches[0].clientX - window.pageXOffset - rect.left) 
+        // x = e.offsetX;
+        x = offsetX
         innerContainer.style.left = `${x - startX}px`;
+        console.log("touchmove", pressed, innerContainer.style.left)
     });
     
     let boundItems = () => {
         let outer = container.getBoundingClientRect();
         let inner = innerContainer.getBoundingClientRect();
+  
     
         if (parseInt(innerContainer.style.left) > 0) {
         innerContainer.style.left = "0px";
@@ -113,12 +162,28 @@
         }
     };
     
-    container.addEventListener("mousemove", (e) => {
+    // container.addEventListener("mousemove", (e) => {
+    //     console.log("mousemove-start", e, innerContainer.style.left);
+    //     if (!pressed) return;
+    //     e.preventDefault();
+    
+    //     x = e.offsetX;
+    //     innerContainer.style.left = `${x - startX}px`;
+    //     console.log("mousemove", e, innerContainer.style.left);
+    //     boundItems();
+    // });
+     container.addEventListener("touchmove", (e) => {
+        console.log("touchmove-start", e,innerContainer.style.left);
         if (!pressed) return;
         e.preventDefault();
+
+        var rect = event.target.getBoundingClientRect()
+        var offsetX = (event.touches[0].clientX - window.pageXOffset - rect.left) 
     
-        x = e.offsetX;
+        // x = e.offsetX;
+        x = offsetX;
         innerContainer.style.left = `${x - startX}px`;
+        console.log("touchmove", e,innerContainer.style.left, x, startX);
         boundItems();
     });
     </script>
