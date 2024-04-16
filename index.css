@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+.mainPage {
+    position: fixed;
+    overflow-y: auto;
+    height:100%;
+    width: 27%;
+    margin-left: 36%;
+    background-color: #efecec;
+
+    /* margin-right: 30%; */ 
+    /* border-style: solid;
+    border-color: black; */
+}
+
+.mainPage::-webkit-scrollbar {
+    display: none;
+  }
+
+
+.test-image  {
+    margin: 0%;
+    max-width: 100%; 
+    object-fit: contain;
+}
+
+
+
+.container {
+    width: 100%;
+    height: 300px;
+    /* position: absolute; */
+    position: relative;
+    /* top: 50%; */
+    margin-top: 40%;
+    /* padding-top: 30%; */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background-color: white;
+}
+    
+.items-container {
+    display: flex;
+    /* gap: px; */
+    pointer-events: none;
+    position: absolute;
+    top: 15%;
+    left: 0;
+ }
+    
+.item {
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.other {
+    margin-top: -35%;
+}
+
+.campaignMessage {
+    font-size: 14px;
+    font-weight: bold;
+    color: #838181;
+    margin-left: 11px;
+    padding-top: 10px;
+  }
+
+  .couponLink{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #78b4f4;
+    margin-top: 55%;
+    padding-bottom: 14px;
+  }
+
+@media only screen and (max-width: 430px) {
+
+    .mainPage {
+        position: fixed;
+        overflow-y: auto;
+        height:100%;
+        width: 80%;
+        margin-left: 10%;
+        background-color: #efecec;
+    
+        /* margin-right: 30%; */ 
+        /* border-style: solid;
+        border-color: black; */
+    }
+
+    .container {
+        width: 100%;
+        height: 300px;
+        /* position: absolute; */
+        position: relative;
+        /* top: 50%; */
+        margin-top: 32%;
+        /* padding-top: 30%; */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        background-color: white;
+    }
+
+    .item {
+        height: 100px;
+        width: 100px;
+        border-radius: 5px;
+        background-color: white;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .other {
+        margin-top: -38%;
+    }
+
+}

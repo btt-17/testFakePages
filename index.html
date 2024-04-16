@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja" style="--vh: 8.58px;">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="index.css">
+  <!-- <script type="text/javascript" src="main.js"></script> -->
+  <!-- UAL Data Layer -->
+
+
+  <body>
+    <div class="mainPage">
+      <div class="toppr">
+        <img class="test-image" src="media/Frame 12.png">
+     </div>
+
+     <!--Container: Campaign + Coupon-->
+     <div class="container">
+      <div class="campaignMessage">学んでトクトク！おでかけ投票キャンペーン</div>
+      <div class="items-container">
+        <div class="item">
+          <img class="test-image" src="media/Group 42.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 43.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 44.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 45.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image" src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+        <div class="item">
+          <img class="test-image"  src="media/Group 46.png">
+        </div>
+      </div>
+      <div class="couponLink">
+
+        公式LINEでクーポンを獲得しよう
+      </div>
+    </div> 
+    <div class="other">
+      <img class="test-image" src="media/Frame 13.png" >
+    </div> 
+    
+    </div>
+    
+
+
+  <script>
+    let container = document.querySelector(".container");
+    let innerContainer = document.querySelector(".items-container");
+    
+    let pressed = false;
+    let startX;
+    let x;
+    container.addEventListener("mousedown", (e) => {
+        pressed = true;
+        startX = e.offsetX - innerContainer.offsetLeft;
+        container.style.cursor = "grabbing";
+    });
+    
+    container.addEventListener("mouseenter", () => {
+        container.style.cursor = "grab";
+    });
+    
+    container.addEventListener("mouseup", () => {
+        container.style.cursor = "grab";
+        pressed = false;
+    });
+    
+    container.addEventListener("mousemove", (e) => {
+        if (!pressed) return;
+        e.preventDefault();
+    
+        x = e.offsetX;
+        innerContainer.style.left = `${x - startX}px`;
+    });
+    
+    let boundItems = () => {
+        let outer = container.getBoundingClientRect();
+        let inner = innerContainer.getBoundingClientRect();
+    
+        if (parseInt(innerContainer.style.left) > 0) {
+        innerContainer.style.left = "0px";
+        }
+    
+        if (inner.right < outer.right) {
+        innerContainer.style.left = `-${inner.width - outer.width}px`;
+        }
+    };
+    
+    container.addEventListener("mousemove", (e) => {
+        if (!pressed) return;
+        e.preventDefault();
+    
+        x = e.offsetX;
+        innerContainer.style.left = `${x - startX}px`;
+        boundItems();
+    });
+    </script>
+
+
+
+    
+  </body>
+
+
+<!-- END GTM NoScript -->
+
+</html>
